@@ -21,7 +21,7 @@
  
  The count is equal to the `daysInWeek` property, likely seven. You can position them in the call to `layoutViewsForColumnAtIndex:inRect:`.
  */
-@property (nonatomic, strong) NSArray *headerLabels;
+@property (nonatomic, retain) NSArray *headerLabels;
 
 
 /** Creates the header labels.

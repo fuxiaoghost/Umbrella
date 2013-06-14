@@ -20,6 +20,15 @@
 
 @implementation TSQCalendarCell
 
+- (void) dealloc{
+    self.firstOfMonth = nil;
+    self.calendar = nil;
+    self.textColor = nil;
+    
+   
+    [super dealloc];
+}
+
 - (id)initWithCalendar:(NSCalendar *)calendar reuseIdentifier:(NSString *)reuseIdentifier;
 {
     self = [self initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
@@ -27,7 +36,7 @@
         return nil;
     }
     
-    _calendar = calendar;
+    self.calendar = calendar;
     NSString *languageCode = [[NSLocale currentLocale] objectForKey:NSLocaleLanguageCode];
     self.layoutDirection = [NSLocale characterDirectionForLanguage:languageCode];
     self.backgroundColor = [UIColor colorWithRed:0.84f green:0.85f blue:0.86f alpha:1.0f];

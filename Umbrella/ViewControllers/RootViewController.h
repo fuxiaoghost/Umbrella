@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  RootViewController.h
 //  Umbrella
 //
 //  Created by Wang Shuguang on 13-6-14.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (retain, nonatomic) UIWindow *window;
-
+@interface RootViewController : UIViewController{
+    
+}
+@property (nonatomic, retain) NSCalendar *calendar;
 @end

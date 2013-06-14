@@ -32,6 +32,20 @@
 
 @implementation TSQCalendarRowCell
 
+- (void) dealloc{
+    
+    self.beginningDate = nil;
+    self.dayButtons = nil;
+    self.notThisMonthButtons = nil;
+    self.todayButton = nil;
+    self.selectedButton = nil;
+    self.dayFormatter = nil;
+    self.accessibilityFormatter = nil;
+    self.todayDateComponents = nil;
+
+    [super dealloc];
+}
+
 - (id)initWithCalendar:(NSCalendar *)calendar reuseIdentifier:(NSString *)reuseIdentifier;
 {
     self = [super initWithCalendar:calendar reuseIdentifier:reuseIdentifier];
@@ -73,6 +87,7 @@
         [notThisMonthButtons addObject:button];
         [self.contentView addSubview:button];
         [self configureButton:button];
+        [button release];
 
         button.enabled = NO;
         UIColor *backgroundPattern = [UIColor colorWithPatternImage:[self notThisMonthBackgroundImage]];
@@ -84,7 +99,7 @@
 
 - (void)createTodayButton;
 {
-    self.todayButton = [[UIButton alloc] initWithFrame:self.contentView.bounds];
+    self.todayButton = [[[UIButton alloc] initWithFrame:self.contentView.bounds] autorelease];
     [self.contentView addSubview:self.todayButton];
     [self configureButton:self.todayButton];
     [self.todayButton addTarget:self action:@selector(todayButtonPressed:) forControlEvents:UIControlEventTouchDown];
@@ -98,7 +113,7 @@
 
 - (void)createSelectedButton;
 {
-    self.selectedButton = [[UIButton alloc] initWithFrame:self.contentView.bounds];
+    self.selectedButton = [[[UIButton alloc] initWithFrame:self.contentView.bounds] autorelease];
     [self.contentView addSubview:self.selectedButton];
     [self configureButton:self.selectedButton];
     
@@ -115,9 +130,11 @@
 
 - (void)setBeginningDate:(NSDate *)date;
 {
+    [_beginningDate release];
     _beginningDate = date;
+    [_beginningDate retain];
     
-    NSDateComponents *offset = [NSDateComponents new];
+    NSDateComponents *offset = [[NSDateComponents alloc] init];
     offset.day = 1;
 
     self.todayButton.hidden = YES;
@@ -157,6 +174,7 @@
 
         date = [self.calendar dateByAddingComponents:offset toDate:date options:0];
     }
+    [offset release];
 }
 
 - (void)setBottomRow:(BOOL)bottomRow;
@@ -168,25 +186,27 @@
 
     _bottomRow = bottomRow;
     
-    self.backgroundView = [[UIImageView alloc] initWithImage:self.backgroundImage];
+    self.backgroundView = [[[UIImageView alloc] initWithImage:self.backgroundImage] autorelease];
     
     [self setNeedsLayout];
 }
 
 - (IBAction)dateButtonPressed:(id)sender;
 {
-    NSDateComponents *offset = [NSDateComponents new];
+    NSDateComponents *offset = [[NSDateComponents alloc] init];
     offset.day = [self.dayButtons indexOfObject:sender];
     NSDate *selectedDate = [self.calendar dateByAddingComponents:offset toDate:self.beginningDate options:0];
     self.calendarView.selectedDate = selectedDate;
+    [offset release];
 }
 
 - (IBAction)todayButtonPressed:(id)sender;
 {
-    NSDateComponents *offset = [NSDateComponents new];
+    NSDateComponents *offset = [[NSDateComponents alloc] init];
     offset.day = self.indexOfTodayButton;
     NSDate *selectedDate = [self.calendar dateByAddingComponents:offset toDate:self.beginningDate options:0];
     self.calendarView.selectedDate = selectedDate;
+    [offset release];
 }
 
 - (void)layoutSubviews;
