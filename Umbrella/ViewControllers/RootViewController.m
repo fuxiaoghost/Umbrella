@@ -7,80 +7,44 @@
 //
 
 #import "RootViewController.h"
-#import "TSQTACalendarRowCell.h"
-#import "TimesSquare.h"
+
 
 @interface RootViewController ()
 
-@property (nonatomic, retain) NSTimer *timer;
-
-@end
-
-@interface TSQCalendarView (AccessingPrivateStuff)
-
-@property (nonatomic, readonly) UITableView *tableView;
 
 @end
 
 @implementation RootViewController
 
 - (void) dealloc{
-    self.calendar = nil;
+    [beginningVC release];
+    [calendarVC release];
     [super dealloc];
-}
-
-- (void)loadView;{
-    TSQCalendarView *calendarView = [[TSQCalendarView alloc] init];
-    calendarView.calendar = self.calendar;
-    calendarView.rowCellClass = [TSQTACalendarRowCell class];
-    calendarView.firstDate = [NSDate date];
-    calendarView.lastDate = [NSDate dateWithTimeIntervalSinceNow:60 * 60 * 24 * 365 * 5];
-    calendarView.backgroundColor = [UIColor colorWithRed:0.84f green:0.85f blue:0.86f alpha:1.0f];
-    calendarView.pagingEnabled = YES;
-    CGFloat onePixel = 1.0f / [UIScreen mainScreen].scale;
-    calendarView.contentInset = UIEdgeInsetsMake(0.0f, onePixel, 0.0f, onePixel);
-    
-    self.view = calendarView;
 }
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    // 两页的容器
+    contentScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 20)];
+    contentScrollView.pagingEnabled = YES;
+    contentScrollView.contentSize = CGSizeMake(contentScrollView.frame.size.width * 2, contentScrollView.frame.size.height);
+    contentScrollView.showsHorizontalScrollIndicator = NO;
+    contentScrollView.showsVerticalScrollIndicator = NO;
+    contentScrollView.bounces = NO;
+    [self.view addSubview:contentScrollView];
+    [contentScrollView release];
+    
+    // 启动页面
+    beginningVC = [[BeginningViewController alloc] init];
+    beginningVC.view.frame = CGRectMake(0, 0, contentScrollView.frame.size.width, contentScrollView.frame.size.height);
+    [contentScrollView addSubview:beginningVC.view];
+    
+    // 日历页面
+    calendarVC = [[CalendarViewController alloc] init];
+    calendarVC.view.frame = CGRectMake(contentScrollView.frame.size.width, 0, contentScrollView.frame.size.width, contentScrollView.frame.size.height);
+    [contentScrollView addSubview:calendarVC.view];
     
 }
-
-- (void)setCalendar:(NSCalendar *)calendar{
-    [_calendar release];
-    _calendar = calendar;
-    [_calendar retain];
-    
-    self.navigationItem.title = calendar.calendarIdentifier;
-    self.tabBarItem.title = calendar.calendarIdentifier;
-}
-
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    
-    // Uncomment this to test scrolling performance of your custom drawing
-    //    self.timer = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(scroll) userInfo:nil repeats:YES];
-}
-
-- (void)viewWillDisappear:(BOOL)animated{
-    [self.timer invalidate];
-    self.timer = nil;
-}
-
-- (void)scroll{
-    static BOOL atTop = YES;
-    TSQCalendarView *calendarView = (TSQCalendarView *)self.view;
-    UITableView *tableView = calendarView.tableView;
-    
-    [tableView setContentOffset:CGPointMake(0.f, atTop ? 10000.f : 0.f) animated:YES];
-    atTop = !atTop;
-}
-
-
-
-
 
 @end

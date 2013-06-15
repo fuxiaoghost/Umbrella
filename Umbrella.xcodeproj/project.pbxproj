@@ -32,6 +32,15 @@
 		79D52780176ADF9900E4B7D6 /* CalendarTodaysDate.png in Resources */ = {isa = PBXBuildFile; fileRef = 79D52776176ADF9900E4B7D6 /* CalendarTodaysDate.png */; };
 		79D52781176ADF9900E4B7D6 /* CalendarTodaysDate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79D52777176ADF9900E4B7D6 /* CalendarTodaysDate@2x.png */; };
 		79D52785176AE04600E4B7D6 /* TSQTACalendarRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79D52784176AE04600E4B7D6 /* TSQTACalendarRowCell.m */; };
+		DD69727D176C1303006A3C37 /* BeginningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69727C176C1303006A3C37 /* BeginningViewController.m */; };
+		DD697280176C1316006A3C37 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69727F176C1316006A3C37 /* CalendarViewController.m */; };
+		DD697287176C2B1A006A3C37 /* ActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DD697286176C2B1A006A3C37 /* ActionButton.m */; };
+		DD69728A176C331E006A3C37 /* setting_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DD697288176C331E006A3C37 /* setting_icon.png */; };
+		DD69728B176C331E006A3C37 /* setting_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD697289176C331E006A3C37 /* setting_icon@2x.png */; };
+		DD69728E176C343E006A3C37 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69728D176C343E006A3C37 /* SettingViewController.m */; };
+		DD697291176C385D006A3C37 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD697290176C385D006A3C37 /* BaseViewController.m */; };
+		DD697294176C414C006A3C37 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD697293176C414C006A3C37 /* Config.plist */; };
+		DD697298176C45C5006A3C37 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = DD697297176C45C5006A3C37 /* Utils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +80,22 @@
 		79D52777176ADF9900E4B7D6 /* CalendarTodaysDate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CalendarTodaysDate@2x.png"; sourceTree = "<group>"; };
 		79D52783176AE04600E4B7D6 /* TSQTACalendarRowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSQTACalendarRowCell.h; sourceTree = "<group>"; };
 		79D52784176AE04600E4B7D6 /* TSQTACalendarRowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSQTACalendarRowCell.m; sourceTree = "<group>"; };
+		DD69727B176C1303006A3C37 /* BeginningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeginningViewController.h; sourceTree = "<group>"; };
+		DD69727C176C1303006A3C37 /* BeginningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeginningViewController.m; sourceTree = "<group>"; };
+		DD69727E176C1316006A3C37 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
+		DD69727F176C1316006A3C37 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
+		DD697281176C15C8006A3C37 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		DD697285176C2B1A006A3C37 /* ActionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionButton.h; sourceTree = "<group>"; };
+		DD697286176C2B1A006A3C37 /* ActionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionButton.m; sourceTree = "<group>"; };
+		DD697288176C331E006A3C37 /* setting_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting_icon.png; sourceTree = "<group>"; };
+		DD697289176C331E006A3C37 /* setting_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_icon@2x.png"; sourceTree = "<group>"; };
+		DD69728C176C343E006A3C37 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		DD69728D176C343E006A3C37 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		DD69728F176C385D006A3C37 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		DD697290176C385D006A3C37 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		DD697293176C414C006A3C37 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		DD697296176C45C5006A3C37 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		DD697297176C45C5006A3C37 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,11 +142,13 @@
 		79D52743176AC46800E4B7D6 /* Umbrella */ = {
 			isa = PBXGroup;
 			children = (
+				DD697295176C45AB006A3C37 /* Utilities */,
 				79D5275A176AC5BE00E4B7D6 /* TimesSquare */,
 				79D52769176ADEE000E4B7D6 /* ViewControllers */,
 				79D52782176AE01700E4B7D6 /* Views */,
 				79D5274C176AC46800E4B7D6 /* AppDelegate.h */,
 				79D5274D176AC46800E4B7D6 /* AppDelegate.m */,
+				DD697281176C15C8006A3C37 /* Config.h */,
 				79D52744176AC46800E4B7D6 /* Supporting Files */,
 			);
 			path = Umbrella;
@@ -130,6 +157,8 @@
 		79D52744176AC46800E4B7D6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DD697292176C4133006A3C37 /* Config */,
+				DD697282176C22B9006A3C37 /* Fonts */,
 				79D5276D176ADF8D00E4B7D6 /* Images */,
 				79D52745176AC46800E4B7D6 /* Umbrella-Info.plist */,
 				79D52746176AC46800E4B7D6 /* InfoPlist.strings */,
@@ -163,6 +192,14 @@
 			children = (
 				79D5276A176ADEFE00E4B7D6 /* RootViewController.h */,
 				79D5276B176ADEFE00E4B7D6 /* RootViewController.m */,
+				DD69727B176C1303006A3C37 /* BeginningViewController.h */,
+				DD69727C176C1303006A3C37 /* BeginningViewController.m */,
+				DD69727E176C1316006A3C37 /* CalendarViewController.h */,
+				DD69727F176C1316006A3C37 /* CalendarViewController.m */,
+				DD69728C176C343E006A3C37 /* SettingViewController.h */,
+				DD69728D176C343E006A3C37 /* SettingViewController.m */,
+				DD69728F176C385D006A3C37 /* BaseViewController.h */,
+				DD697290176C385D006A3C37 /* BaseViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -170,6 +207,8 @@
 		79D5276D176ADF8D00E4B7D6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DD697288176C331E006A3C37 /* setting_icon.png */,
+				DD697289176C331E006A3C37 /* setting_icon@2x.png */,
 				79D5276E176ADF9900E4B7D6 /* CalendarPreviousMonth.png */,
 				79D5276F176ADF9900E4B7D6 /* CalendarPreviousMonth@2x.png */,
 				79D52770176ADF9900E4B7D6 /* CalendarRow.png */,
@@ -187,10 +226,36 @@
 		79D52782176AE01700E4B7D6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DD697285176C2B1A006A3C37 /* ActionButton.h */,
+				DD697286176C2B1A006A3C37 /* ActionButton.m */,
 				79D52783176AE04600E4B7D6 /* TSQTACalendarRowCell.h */,
 				79D52784176AE04600E4B7D6 /* TSQTACalendarRowCell.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		DD697282176C22B9006A3C37 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		DD697292176C4133006A3C37 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				DD697293176C414C006A3C37 /* Config.plist */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		DD697295176C45AB006A3C37 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				DD697296176C45C5006A3C37 /* Utils.h */,
+				DD697297176C45C5006A3C37 /* Utils.m */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +323,9 @@
 				79D5277F176ADF9900E4B7D6 /* CalendarSelectedDate@2x.png in Resources */,
 				79D52780176ADF9900E4B7D6 /* CalendarTodaysDate.png in Resources */,
 				79D52781176ADF9900E4B7D6 /* CalendarTodaysDate@2x.png in Resources */,
+				DD69728A176C331E006A3C37 /* setting_icon.png in Resources */,
+				DD69728B176C331E006A3C37 /* setting_icon@2x.png in Resources */,
+				DD697294176C414C006A3C37 /* Config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +344,12 @@
 				79D52768176AC5BE00E4B7D6 /* TSQCalendarView.m in Sources */,
 				79D5276C176ADEFE00E4B7D6 /* RootViewController.m in Sources */,
 				79D52785176AE04600E4B7D6 /* TSQTACalendarRowCell.m in Sources */,
+				DD69727D176C1303006A3C37 /* BeginningViewController.m in Sources */,
+				DD697280176C1316006A3C37 /* CalendarViewController.m in Sources */,
+				DD697287176C2B1A006A3C37 /* ActionButton.m in Sources */,
+				DD69728E176C343E006A3C37 /* SettingViewController.m in Sources */,
+				DD697291176C385D006A3C37 /* BaseViewController.m in Sources */,
+				DD697298176C45C5006A3C37 /* Utils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

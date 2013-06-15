@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BeginningViewController.h"
+#import "CalendarViewController.h"
 
 @interface RootViewController : UIViewController{
-    
+@private
+    UIScrollView *contentScrollView;
+    BeginningViewController *beginningVC;
+    CalendarViewController *calendarVC;
 }
-@property (nonatomic, retain) NSCalendar *calendar;
+
 @end
