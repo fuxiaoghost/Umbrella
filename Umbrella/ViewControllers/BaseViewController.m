@@ -7,6 +7,7 @@
 //
 
 #import "BaseViewController.h"
+#import "ActionButton.h"
 
 @interface BaseViewController ()
 
@@ -18,7 +19,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = RGBACOLOR(250, 250, 250, 1);
     
     // 导航栏标题
     if (LAYOUT_PORTRAIT || LAYOUT_UPSIDEDOWN) {
@@ -44,14 +45,26 @@
     splitView.backgroundColor = UMB_PINK;
     [self.view addSubview:splitView];
     [splitView release];
+    
+    ActionButton *closeButton = [ActionButton buttonWithType:UIButtonTypeCustom];
+    closeButton.frame = CGRectMake(10, 7, 50, 30);
+    [closeButton setTitle:@"返回" forState:UIControlStateNormal];
+    [closeButton.titleLabel setFont:[UIFont boldSystemFontOfSize:16.0f]];
+    [self.view addSubview:closeButton];
+    closeButton.radius = 2.0f;
+    [closeButton addTarget:self action:@selector(closeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+#pragma mark -
+#pragma Actions
+- (void) closeButtonClick:(id)sender{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void) setTitle:(NSString *)title{
     [super setTitle:title];
     [titleLbl setText:[NSString stringWithFormat:@"%@",title]];
 }
-
-
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
     [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];

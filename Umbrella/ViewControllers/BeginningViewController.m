@@ -57,15 +57,18 @@
 
 - (void) settingButtonClick:(id)sender{
     SettingViewController *settingVC = [[SettingViewController alloc] init];
+    UINavigationController *navC = [[UINavigationController alloc] initWithRootViewController:settingVC];
+    [settingVC release];
+    
     if (IOSVersion_5) {
-        [self presentViewController:settingVC animated:YES completion:^{
+        [self presentViewController:navC animated:YES completion:^{
             
         }];
     }else{
-        [self presentModalViewController:settingVC animated:YES];
+        [self presentModalViewController:navC animated:YES];
     }
     
-    [settingVC release];
+    [navC release];
 }
 
 @end

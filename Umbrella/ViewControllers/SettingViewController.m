@@ -8,28 +8,46 @@
 
 #import "SettingViewController.h"
 #import "ActionButton.h"
+#import "SettingCell.h"
+#import "SettingForCycleViewController.h"
+#import "SettingForDataViewController.h"
+#import "SettingForDisplayViewController.h"
+#import "SettingForLockViewController.h"
+#import "SettingForRemindViewController.h"
 
 @interface SettingViewController ()
-
+@property (nonatomic,retain) NSArray *configArray;
 @end
 
 @implementation SettingViewController
+@synthesize configArray;
 
+- (void) dealloc{
+    self.configArray = nil;
+    [super dealloc];
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.title = @"设置";
     
-    ActionButton *closeButton = [ActionButton buttonWithType:UIButtonTypeCustom];
-    closeButton.frame = CGRectMake(10, 7, 50, 30);
-    [closeButton setTitle:@"返回" forState:UIControlStateNormal];
-    [closeButton.titleLabel setFont:[UIFont boldSystemFontOfSize:16.0f]];
-    [self.view addSubview:closeButton];
-    closeButton.radius = 2.0f;
-    [closeButton addTarget:self action:@selector(closeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    self.title = @"设置";
+    self.navigationController.navigationBarHidden = YES;
+    
+    // 获取配置文件
+    self.configArray = [Utils config];
+    
+    //
+    UITableView *settingList = [[UITableView alloc] initWithFrame:CGRectMake(0, 45, SCREEN_WIDTH, MAINCONTENTHEIGHT) style:UITableViewStyleGrouped];
+    settingList.backgroundColor = [UIColor clearColor];
+    settingList.backgroundView = nil;
+    settingList.delegate = self;
+    settingList.dataSource = self;
+    settingList.sectionHeaderHeight = 30;
+    settingList.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.view addSubview:settingList];
+    [settingList release];
 }
 
 #pragma mark -
@@ -42,6 +60,77 @@
     }else{
         [self dismissModalViewControllerAnimated:YES];
     }
+}
+
+#pragma mark -
+#pragma mark UITableViewDataSource
+- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.configArray.count;
+}
+
+- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *cellIdentifier = @"SettingCell";
+    SettingCell *cell = (SettingCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+        cell = [[[SettingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
+        cell.textLabel.text = [[self.configArray objectAtIndex:indexPath.row] objectForKey:@"Name"];
+        cell.backgroundView = [[[UIView alloc] init] autorelease];
+        cell.backgroundColor = [UIColor clearColor];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    if (indexPath.row == 0) {
+        cell.cellType = HeaderCell;
+    }else if(indexPath.row == self.configArray.count - 1){
+        cell.cellType = FooterCell;
+    }else{
+        cell.cellType = MiddleCell;
+    }
+    return cell;
+}
+
+#pragma mark -
+#pragma mark UITableViewDelegate
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    switch (indexPath.row) {
+        case 0:{
+            SettingForDisplayViewController *settingForDisplayVC = [[SettingForDisplayViewController alloc] init];
+            [self.navigationController pushViewController:settingForDisplayVC animated:YES];
+            [settingForDisplayVC release];
+            break;
+        }
+        case 1:{
+            SettingForCycleViewController *settingForCycleVC = [[SettingForCycleViewController alloc] init];
+            [self.navigationController pushViewController:settingForCycleVC animated:YES];
+            [settingForCycleVC release];
+            break;
+        }
+        case 2:{
+            SettingForRemindViewController *settingForRemindVC = [[SettingForRemindViewController alloc] init];
+            [self.navigationController pushViewController:settingForRemindVC animated:YES];
+            [settingForRemindVC release];
+            break;
+        }
+        case 3:{
+            SettingForLockViewController *settingForLockVC = [[SettingForLockViewController alloc] init];
+            [self.navigationController pushViewController:settingForLockVC animated:YES];
+            [settingForLockVC release];
+            break;
+        }
+        case 4:{
+            SettingForDataViewController *settingForDataVC = [[SettingForDataViewController alloc] init];
+            [self.navigationController pushViewController:settingForDataVC animated:YES];
+            [settingForDataVC release];
+            break;
+        }
+        default:
+            break;
+    }
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

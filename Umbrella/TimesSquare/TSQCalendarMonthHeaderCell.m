@@ -52,8 +52,9 @@ static const CGFloat TSQCalendarMonthHeaderCellMonthsHeight = 20.f;
         _monthDateFormatter = [NSDateFormatter new];
         _monthDateFormatter.calendar = self.calendar;
         
-        NSString *dateComponents = @"yyyyLLLL";
-        _monthDateFormatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:dateComponents options:0 locale:[NSLocale currentLocale]];
+        NSString *dateComponents = @"yyyy年M月";
+        //_monthDateFormatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:dateComponents options:0 locale:[NSLocale currentLocale]];
+        _monthDateFormatter.dateFormat = dateComponents;
     }
     return _monthDateFormatter;
 }
@@ -67,7 +68,7 @@ static const CGFloat TSQCalendarMonthHeaderCellMonthsHeight = 20.f;
     
     NSDateFormatter *dayFormatter = [[NSDateFormatter alloc] init];
     dayFormatter.calendar = self.calendar;
-    dayFormatter.dateFormat = @"cccccc";
+    dayFormatter.dateFormat = @"EEE";
     
     for (NSUInteger index = 0; index < self.daysInWeek; index++) {
         [headerLabels addObject:@""];
@@ -77,7 +78,23 @@ static const CGFloat TSQCalendarMonthHeaderCellMonthsHeight = 20.f;
         NSInteger ordinality = [self.calendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSWeekCalendarUnit forDate:referenceDate];
         UILabel *label = [[UILabel alloc] initWithFrame:self.frame];
         label.textAlignment = NSTextAlignmentCenter;
-        label.text = [dayFormatter stringFromDate:referenceDate];
+        NSString *weekStr = [dayFormatter stringFromDate:referenceDate];
+        if ([weekStr isEqualToString:@"Sun"]) {
+            label.text = @"周日";
+        }else if([weekStr isEqualToString:@"Sat"]){
+            label.text = @"周六";
+        }else if([weekStr isEqualToString:@"Mon"]){
+            label.text = @"周一";
+        }else if([weekStr isEqualToString:@"Tue"]){
+            label.text = @"周二";
+        }else if([weekStr isEqualToString:@"Wed"]){
+            label.text = @"周三";
+        }else if([weekStr isEqualToString:@"Thu"]){
+            label.text = @"周四";
+        }else if([weekStr isEqualToString:@"Fri"]){
+            label.text = @"周五";
+        }
+        
         label.font = [UIFont boldSystemFontOfSize:12.f];
         label.backgroundColor = self.backgroundColor;
         label.textColor = self.textColor;

@@ -13,4 +13,5 @@
     #import <Foundation/Foundation.h>
     #import "Config.h"
     #import "Utils.h"
+    #import "UIImage+Utils.h"
 #endif

@@ -32,6 +32,7 @@
     contentScrollView.showsHorizontalScrollIndicator = NO;
     contentScrollView.showsVerticalScrollIndicator = NO;
     contentScrollView.bounces = NO;
+    contentScrollView.scrollsToTop = NO;
     [self.view addSubview:contentScrollView];
     [contentScrollView release];
     
