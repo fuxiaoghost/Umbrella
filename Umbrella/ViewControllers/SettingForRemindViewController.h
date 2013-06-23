@@ -8,6 +8,6 @@
 
 #import "BaseViewController.h"
 
-@interface SettingForRemindViewController : BaseViewController
-
+@interface SettingForRemindViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
+@property (nonatomic,assign) NSInteger dataIndex;
 @end

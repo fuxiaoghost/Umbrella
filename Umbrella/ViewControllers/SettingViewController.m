@@ -35,7 +35,7 @@
     self.title = @"设置";
     self.navigationController.navigationBarHidden = YES;
     
-    // 获取配置文件
+    // 获取配置文件，默认配置文件
     self.configArray = [Utils config];
     
     //
@@ -76,8 +76,9 @@
     static NSString *cellIdentifier = @"SettingCell";
     SettingCell *cell = (SettingCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
-        cell = [[[SettingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
+        cell = [[[SettingCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier] autorelease];
         cell.textLabel.text = [[self.configArray objectAtIndex:indexPath.row] objectForKey:@"Name"];
+        cell.detailTextLabel.text = [[self.configArray objectAtIndex:indexPath.row] objectForKey:@"SubName"];
         cell.backgroundView = [[[UIView alloc] init] autorelease];
         cell.backgroundColor = [UIColor clearColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -104,12 +105,14 @@
         }
         case 1:{
             SettingForCycleViewController *settingForCycleVC = [[SettingForCycleViewController alloc] init];
+            settingForCycleVC.dataIndex = indexPath.row;
             [self.navigationController pushViewController:settingForCycleVC animated:YES];
             [settingForCycleVC release];
             break;
         }
         case 2:{
             SettingForRemindViewController *settingForRemindVC = [[SettingForRemindViewController alloc] init];
+            settingForRemindVC.dataIndex = indexPath.row;
             [self.navigationController pushViewController:settingForRemindVC animated:YES];
             [settingForRemindVC release];
             break;

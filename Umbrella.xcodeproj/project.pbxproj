@@ -51,6 +51,13 @@
 		DD352062176D99940032E1C7 /* SettingForRemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD352061176D99940032E1C7 /* SettingForRemindViewController.m */; };
 		DD352065176D99BE0032E1C7 /* SettingForLockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD352064176D99BE0032E1C7 /* SettingForLockViewController.m */; };
 		DD352068176D99EB0032E1C7 /* SettingForDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD352067176D99EB0032E1C7 /* SettingForDataViewController.m */; };
+		DD448A8B177554510041BB0B /* NumSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD448A8A177554510041BB0B /* NumSelectorViewController.m */; };
+		DD448A8E177582A60041BB0B /* SelectableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD448A8D177582A60041BB0B /* SelectableCell.m */; };
+		DD448A93177585970041BB0B /* checkbox_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = DD448A8F177585970041BB0B /* checkbox_bg.png */; };
+		DD448A94177585970041BB0B /* checkbox_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD448A90177585970041BB0B /* checkbox_bg@2x.png */; };
+		DD448A95177585970041BB0B /* checkbox.png in Resources */ = {isa = PBXBuildFile; fileRef = DD448A91177585970041BB0B /* checkbox.png */; };
+		DD448A96177585970041BB0B /* checkbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD448A92177585970041BB0B /* checkbox@2x.png */; };
+		DD448A9C177586700041BB0B /* NumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD448A9B177586700041BB0B /* NumCell.m */; };
 		DD69727D176C1303006A3C37 /* BeginningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69727C176C1303006A3C37 /* BeginningViewController.m */; };
 		DD697280176C1316006A3C37 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD69727F176C1316006A3C37 /* CalendarViewController.m */; };
 		DD697287176C2B1A006A3C37 /* ActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DD697286176C2B1A006A3C37 /* ActionButton.m */; };
@@ -126,6 +133,16 @@
 		DD352066176D99EB0032E1C7 /* SettingForDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingForDataViewController.h; sourceTree = "<group>"; };
 		DD352067176D99EB0032E1C7 /* SettingForDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingForDataViewController.m; sourceTree = "<group>"; };
 		DD352069176DF2300032E1C7 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		DD448A89177554510041BB0B /* NumSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumSelectorViewController.h; sourceTree = "<group>"; };
+		DD448A8A177554510041BB0B /* NumSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumSelectorViewController.m; sourceTree = "<group>"; };
+		DD448A8C177582A60041BB0B /* SelectableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectableCell.h; sourceTree = "<group>"; };
+		DD448A8D177582A60041BB0B /* SelectableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectableCell.m; sourceTree = "<group>"; };
+		DD448A8F177585970041BB0B /* checkbox_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_bg.png; sourceTree = "<group>"; };
+		DD448A90177585970041BB0B /* checkbox_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox_bg@2x.png"; sourceTree = "<group>"; };
+		DD448A91177585970041BB0B /* checkbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox.png; sourceTree = "<group>"; };
+		DD448A92177585970041BB0B /* checkbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox@2x.png"; sourceTree = "<group>"; };
+		DD448A9A177586700041BB0B /* NumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumCell.h; sourceTree = "<group>"; };
+		DD448A9B177586700041BB0B /* NumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumCell.m; sourceTree = "<group>"; };
 		DD69727B176C1303006A3C37 /* BeginningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeginningViewController.h; sourceTree = "<group>"; };
 		DD69727C176C1303006A3C37 /* BeginningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeginningViewController.m; sourceTree = "<group>"; };
 		DD69727E176C1316006A3C37 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
@@ -256,6 +273,8 @@
 				DD352064176D99BE0032E1C7 /* SettingForLockViewController.m */,
 				DD352066176D99EB0032E1C7 /* SettingForDataViewController.h */,
 				DD352067176D99EB0032E1C7 /* SettingForDataViewController.m */,
+				DD448A89177554510041BB0B /* NumSelectorViewController.h */,
+				DD448A8A177554510041BB0B /* NumSelectorViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -263,6 +282,10 @@
 		79D5276D176ADF8D00E4B7D6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DD448A8F177585970041BB0B /* checkbox_bg.png */,
+				DD448A90177585970041BB0B /* checkbox_bg@2x.png */,
+				DD448A91177585970041BB0B /* checkbox.png */,
+				DD448A92177585970041BB0B /* checkbox@2x.png */,
 				DD35203F176D8A3E0032E1C7 /* table_arrow.png */,
 				DD352040176D8A3E0032E1C7 /* table_arrow@2x.png */,
 				DD352041176D8A3E0032E1C7 /* table_below_normal.png */,
@@ -294,6 +317,10 @@
 		79D52782176AE01700E4B7D6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DD448A9A177586700041BB0B /* NumCell.h */,
+				DD448A9B177586700041BB0B /* NumCell.m */,
+				DD448A8C177582A60041BB0B /* SelectableCell.h */,
+				DD448A8D177582A60041BB0B /* SelectableCell.m */,
 				DD697285176C2B1A006A3C37 /* ActionButton.h */,
 				DD697286176C2B1A006A3C37 /* ActionButton.m */,
 				79D52783176AE04600E4B7D6 /* TSQTACalendarRowCell.h */,
@@ -411,6 +438,10 @@
 				DD352054176D8A3E0032E1C7 /* table_single_normal@2x.png in Resources */,
 				DD352055176D8A3E0032E1C7 /* table_upside_normal.png in Resources */,
 				DD352056176D8A3E0032E1C7 /* table_upside_normal@2x.png in Resources */,
+				DD448A93177585970041BB0B /* checkbox_bg.png in Resources */,
+				DD448A94177585970041BB0B /* checkbox_bg@2x.png in Resources */,
+				DD448A95177585970041BB0B /* checkbox.png in Resources */,
+				DD448A96177585970041BB0B /* checkbox@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +473,9 @@
 				DD352062176D99940032E1C7 /* SettingForRemindViewController.m in Sources */,
 				DD352065176D99BE0032E1C7 /* SettingForLockViewController.m in Sources */,
 				DD352068176D99EB0032E1C7 /* SettingForDataViewController.m in Sources */,
+				DD448A8B177554510041BB0B /* NumSelectorViewController.m in Sources */,
+				DD448A8E177582A60041BB0B /* SelectableCell.m in Sources */,
+				DD448A9C177586700041BB0B /* NumCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

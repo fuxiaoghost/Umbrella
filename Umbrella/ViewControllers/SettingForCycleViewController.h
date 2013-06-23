@@ -8,6 +8,6 @@
 
 #import "BaseViewController.h"
 
-@interface SettingForCycleViewController : BaseViewController
-
+@interface SettingForCycleViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
+@property (nonatomic,assign) NSInteger dataIndex;
 @end

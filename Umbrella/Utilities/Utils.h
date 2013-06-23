@@ -11,5 +11,5 @@
 @interface Utils : NSObject{
     
 }
-+ (NSArray *) config;
++ (NSMutableArray *) config;
 @end
