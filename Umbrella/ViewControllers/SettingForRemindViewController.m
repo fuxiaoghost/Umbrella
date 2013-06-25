@@ -79,25 +79,26 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NumSelectorViewController *numSelectorVC = [[NumSelectorViewController alloc] init];
     numSelectorVC.navTitle = [[[[self.configArray objectAtIndex:dataIndex] objectForKey:@"Data"] objectAtIndex:indexPath.row] objectForKey:@"Name"];
-    numSelectorVC.num = [[[[[self.configArray objectAtIndex:dataIndex] objectForKey:@"Data"] objectAtIndex:indexPath.row] objectForKey:@"Data"] intValue];
-    
+    NSArray *remindArray = [[[[self.configArray objectAtIndex:dataIndex] objectForKey:@"Data"] objectAtIndex:indexPath.row] objectForKey:@"Data"];
+    numSelectorVC.remindArray = [NSMutableArray arrayWithArray:remindArray];
+    numSelectorVC.num = -1;
     switch (indexPath.row) {
         case 0:{
             numSelectorVC.tips = @"您希望在此事件前几天进行提醒？设备会发出弹出窗口来提醒您";
             numSelectorVC.num_min = UMB_REMIND_MIN;
-            numSelectorVC.num_max = UMB_REMIND_MIN;
+            numSelectorVC.num_max = UMB_REMIND_MAX;
             break;
         }
         case 1:{
             numSelectorVC.tips = @"您希望在此事件前几天进行提醒？设备会发出弹出窗口来提醒您";
             numSelectorVC.num_min = UMB_REMIND_MIN;
-            numSelectorVC.num_max = UMB_REMIND_MIN;
+            numSelectorVC.num_max = UMB_REMIND_MAX;
             break;
         }
         case 2:{
             numSelectorVC.tips = @"您希望在此事件前几天进行提醒？设备会发出弹出窗口来提醒您";
             numSelectorVC.num_min = UMB_REMIND_MIN;
-            numSelectorVC.num_max = UMB_REMIND_MIN;
+            numSelectorVC.num_max = UMB_REMIND_MAX;
             break;
         }
             

@@ -9,10 +9,10 @@
 #import "SelectableCell.h"
 
 typedef enum{
-    HeaderCell,
-    MiddleCell,
-    FooterCell,
-    NormalCell
+    NumHeaderCell,
+    NumMiddleCell,
+    NumFooterCell,
+    NumNormalCell
 } NumCellType;
 
 @interface NumCell : UITableViewCell{
@@ -22,5 +22,4 @@ typedef enum{
 }
 @property (nonatomic,assign) NumCellType cellType;
 - (void) setChecked:(BOOL)checked;
-- (void) setCellType:(NumCellType)cellType;
 @end

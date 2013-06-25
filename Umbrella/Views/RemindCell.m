@@ -1,14 +1,14 @@
 //
-//  NumCell.m
+//  RemindCell.m
 //  Umbrella
 //
-//  Created by Dawn on 13-6-22.
+//  Created by Dawn on 13-6-25.
 //  Copyright (c) 2013年 Dawn. All rights reserved.
 //
 
-#import "NumCell.h"
+#import "RemindCell.h"
 
-@implementation NumCell
+@implementation RemindCell
 @synthesize cellType = _cellType;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
@@ -20,31 +20,30 @@
         bgImageView.clipsToBounds = YES;
         [bgImageView release];
         
-        checkImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"checkbox_bg.png"]];
-        [self.contentView addSubview:checkImageView];
-        checkImageView.contentMode = UIViewContentModeCenter;
-        [checkImageView release];
-        checkImageView.frame = CGRectMake(SCREEN_WIDTH - 60,0,44,44);
+        detailButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [detailButton setImage:[UIImage noCacheImageNamed:@"detail_icon.png"] forState:UIControlStateNormal];
+        [self.contentView addSubview:detailButton];
+        detailButton.frame = CGRectMake(SCREEN_WIDTH - 60,0,44,44);
     }
     return self;
 }
 
-- (void) setCellType:(NumCellType)cellType{
+- (void) setCellType:(RemindCellType)cellType{
     _cellType = cellType;
     switch (cellType) {
-        case NumHeaderCell:{
+        case RemindHeaderCell:{
             bgImageView.image = [UIImage stretchableImageWithPath:@"table_upside_normal.png"];
             break;
         }
-        case NumMiddleCell:{
+        case RemindMiddleCell:{
             bgImageView.image = [UIImage stretchableImageWithPath:@"table_middle_normal.png"];
             break;
         }
-        case NumFooterCell:{
+        case RemindFooterCell:{
             bgImageView.image = [UIImage stretchableImageWithPath:@"table_below_normal.png"];
             break;
         }
-        case NumNormalCell:{
+        case RemindNormalCell:{
             bgImageView.image = [UIImage stretchableImageWithPath:@"table_normal.png"];
             break;
         }
@@ -53,11 +52,11 @@
     }
 }
 
-- (void) setChecked:(BOOL)checked{
-    if (checked) {
-        checkImageView.image = [UIImage imageNamed:@"checkbox.png"];
+- (void) setDetail:(BOOL)detail{
+    if (detail) {
+        [detailButton setImage:[UIImage noCacheImageNamed:@"detail_icon.png"] forState:UIControlStateNormal];
     }else{
-        checkImageView.image = [UIImage imageNamed:@"checkbox_bg.png"];
+        [detailButton setImage:nil forState:UIControlStateNormal];
     }
 }
 

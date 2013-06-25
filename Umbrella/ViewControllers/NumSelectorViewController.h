@@ -16,4 +16,5 @@
 @property (nonatomic,copy) NSString *tips;
 @property (nonatomic,assign) NSInteger num_min;
 @property (nonatomic,assign) NSInteger num_max;
+@property (nonatomic,retain) NSMutableArray *remindArray;
 @end

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		796881D317792498008D1697 /* detail_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 796881D117792498008D1697 /* detail_icon.png */; };
+		796881D417792498008D1697 /* detail_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 796881D217792498008D1697 /* detail_icon@2x.png */; };
+		796881D717792928008D1697 /* RemindCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 796881D617792928008D1697 /* RemindCell.m */; };
 		79D5273E176AC46800E4B7D6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79D5273D176AC46800E4B7D6 /* UIKit.framework */; };
 		79D52740176AC46800E4B7D6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79D5273F176AC46800E4B7D6 /* Foundation.framework */; };
 		79D52742176AC46800E4B7D6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79D52741176AC46800E4B7D6 /* CoreGraphics.framework */; };
@@ -70,6 +73,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		796881D117792498008D1697 /* detail_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = detail_icon.png; sourceTree = "<group>"; };
+		796881D217792498008D1697 /* detail_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "detail_icon@2x.png"; sourceTree = "<group>"; };
+		796881D517792928008D1697 /* RemindCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindCell.h; sourceTree = "<group>"; };
+		796881D617792928008D1697 /* RemindCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindCell.m; sourceTree = "<group>"; };
 		79D5273A176AC46800E4B7D6 /* Umbrella.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Umbrella.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79D5273D176AC46800E4B7D6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		79D5273F176AC46800E4B7D6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -282,6 +289,8 @@
 		79D5276D176ADF8D00E4B7D6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				796881D117792498008D1697 /* detail_icon.png */,
+				796881D217792498008D1697 /* detail_icon@2x.png */,
 				DD448A8F177585970041BB0B /* checkbox_bg.png */,
 				DD448A90177585970041BB0B /* checkbox_bg@2x.png */,
 				DD448A91177585970041BB0B /* checkbox.png */,
@@ -319,6 +328,8 @@
 			children = (
 				DD448A9A177586700041BB0B /* NumCell.h */,
 				DD448A9B177586700041BB0B /* NumCell.m */,
+				796881D517792928008D1697 /* RemindCell.h */,
+				796881D617792928008D1697 /* RemindCell.m */,
 				DD448A8C177582A60041BB0B /* SelectableCell.h */,
 				DD448A8D177582A60041BB0B /* SelectableCell.m */,
 				DD697285176C2B1A006A3C37 /* ActionButton.h */,
@@ -442,6 +453,8 @@
 				DD448A94177585970041BB0B /* checkbox_bg@2x.png in Resources */,
 				DD448A95177585970041BB0B /* checkbox.png in Resources */,
 				DD448A96177585970041BB0B /* checkbox@2x.png in Resources */,
+				796881D317792498008D1697 /* detail_icon.png in Resources */,
+				796881D417792498008D1697 /* detail_icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +489,7 @@
 				DD448A8B177554510041BB0B /* NumSelectorViewController.m in Sources */,
 				DD448A8E177582A60041BB0B /* SelectableCell.m in Sources */,
 				DD448A9C177586700041BB0B /* NumCell.m in Sources */,
+				796881D717792928008D1697 /* RemindCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
