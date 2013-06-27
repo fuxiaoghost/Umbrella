@@ -7,8 +7,9 @@
 //
 
 #import "BaseViewController.h"
+#import "RemindCell.h"
 
-@interface NumSelectorViewController : BaseViewController<UITableViewDelegate,UITableViewDataSource>{
+@interface NumSelectorViewController : BaseViewController<UITableViewDelegate,UITableViewDataSource,RemindCellDelegate>{
     
 }
 @property (nonatomic,assign) NSInteger num;

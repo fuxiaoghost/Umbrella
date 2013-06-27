@@ -10,6 +10,7 @@
 
 @implementation RemindCell
 @synthesize cellType = _cellType;
+@synthesize delegate;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -24,8 +25,15 @@
         [detailButton setImage:[UIImage noCacheImageNamed:@"detail_icon.png"] forState:UIControlStateNormal];
         [self.contentView addSubview:detailButton];
         detailButton.frame = CGRectMake(SCREEN_WIDTH - 60,0,44,44);
+        [detailButton addTarget:self action:@selector(detailButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
+}
+
+- (void) detailButtonClick:(id)sender{
+    if ([delegate respondsToSelector:@selector(remindCellDidClickDetail:)]) {
+        [delegate remindCellDidClickDetail:self];
+    }
 }
 
 - (void) setCellType:(RemindCellType)cellType{

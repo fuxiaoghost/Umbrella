@@ -88,7 +88,7 @@
             remindCell.backgroundColor = [UIColor clearColor];
             remindCell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
-    
+        remindCell.delegate = self;
         remindCell.textLabel.text = [NSString stringWithFormat:@"%d天",self.num_min + indexPath.row];
         remindCell.detailTextLabel.text = @"";
         if (self.remindArray.count <= indexPath.row) {
@@ -97,7 +97,14 @@
             if ([[self.remindArray objectAtIndex:indexPath.row] longValue]) {
                 [remindCell setDetail:YES];
                 long timeout = [[self.remindArray objectAtIndex:indexPath.row] longValue];
-                remindCell.detailTextLabel.text = [NSString stringWithFormat:@"%d:%d",(int)(timeout/60),(int)(timeout%60)];
+                NSInteger clock = (int)(timeout/60);
+                NSInteger minute = (int)(timeout%60);
+                if (minute < 10) {
+                    remindCell.detailTextLabel.text = [NSString stringWithFormat:@"%d:0%d      ",clock,minute];
+                }else{
+                    remindCell.detailTextLabel.text = [NSString stringWithFormat:@"%d:%d      ",clock,minute];
+                }
+                
             }else{
                 [remindCell setDetail:NO];
             }
@@ -137,6 +144,12 @@
         numCell.textLabel.text = [NSString stringWithFormat:@"%d天",self.num_min + indexPath.row];
         return numCell;
     }
+}
+
+#pragma mark -
+#pragma mark RemindCellDelegate
+- (void) remindCellDidClickDetail:(RemindCell *)remindCell{
+    
 }
 
 #pragma mark -
