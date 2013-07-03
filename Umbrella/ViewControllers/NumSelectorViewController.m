@@ -8,6 +8,7 @@
 
 #import "NumSelectorViewController.h"
 #import "NumCell.h"
+#import "RemindCell.h"
 
 @interface NumSelectorViewController ()
 
@@ -19,7 +20,12 @@
 @synthesize tips;
 @synthesize num_min;
 @synthesize num_max;
+<<<<<<< HEAD
 @synthesize delegate;
+=======
+@synthesize remindArray;
+
+>>>>>>> f57f866045e4d3ca04604309ce2a5ee27fc62056
 
 - (void) dealloc{
     self.num_min = 0;
@@ -27,6 +33,7 @@
     self.num = 0;
     self.navTitle = nil;
     self.tips = nil;
+    self.remindArray = nil;
     [super dealloc];
 }
 
@@ -76,41 +83,101 @@
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *cellIdentifier = @"NumCell";
-    NumCell *numCell = (NumCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (!numCell) {
-        numCell = [[[NumCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
-        numCell.backgroundView = [[[UIView alloc] init] autorelease];
-        numCell.backgroundColor = [UIColor clearColor];
-        numCell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
-    
-    if (self.num_min + indexPath.row == self.num) {
-        [numCell setChecked:YES];
+    if (self.remindArray) {
+        static NSString *cellIdentifier = @"RemindCell";
+        RemindCell *remindCell = (RemindCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (!remindCell) {
+            remindCell = [[[RemindCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier] autorelease];
+            remindCell.backgroundView = [[[UIView alloc] init] autorelease];
+            remindCell.backgroundColor = [UIColor clearColor];
+            remindCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        remindCell.delegate = self;
+        remindCell.textLabel.text = [NSString stringWithFormat:@"%d天",self.num_min + indexPath.row];
+        remindCell.detailTextLabel.text = @"";
+        if (self.remindArray.count <= indexPath.row) {
+            [remindCell setDetail:NO];
+        }else{
+            if ([[self.remindArray objectAtIndex:indexPath.row] longValue]) {
+                [remindCell setDetail:YES];
+                long timeout = [[self.remindArray objectAtIndex:indexPath.row] longValue];
+                NSInteger clock = (int)(timeout/60);
+                NSInteger minute = (int)(timeout%60);
+                if (minute < 10) {
+                    remindCell.detailTextLabel.text = [NSString stringWithFormat:@"%d:0%d      ",clock,minute];
+                }else{
+                    remindCell.detailTextLabel.text = [NSString stringWithFormat:@"%d:%d      ",clock,minute];
+                }
+                
+            }else{
+                [remindCell setDetail:NO];
+            }
+        }
+        
+        if (indexPath.row == 0) {
+            remindCell.cellType = RemindHeaderCell;
+        }else if(indexPath.row == self.num_max - self.num_min){
+            remindCell.cellType = RemindFooterCell;
+        }else{
+            remindCell.cellType = RemindMiddleCell;
+        }
+        
+        return remindCell;
     }else{
-        [numCell setChecked:NO];
+        static NSString *cellIdentifier = @"NumCell";
+        NumCell *numCell = (NumCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (!numCell) {
+            numCell = [[[NumCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
+            numCell.backgroundView = [[[UIView alloc] init] autorelease];
+            numCell.backgroundColor = [UIColor clearColor];
+            numCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        if (self.num_min + indexPath.row == self.num) {
+            [numCell setChecked:YES];
+        }else{
+            [numCell setChecked:NO];
+        }
+        if (indexPath.row == 0) {
+            numCell.cellType = NumHeaderCell;
+        }else if(indexPath.row == self.num_max - self.num_min){
+            numCell.cellType = NumFooterCell;
+        }else{
+            numCell.cellType = NumMiddleCell;
+        }
+        
+        numCell.textLabel.text = [NSString stringWithFormat:@"%d天",self.num_min + indexPath.row];
+        return numCell;
     }
-    
-    if (indexPath.row == 0) {
-        numCell.cellType = HeaderCell;
-    }else if(indexPath.row == self.num_max - self.num_min){
-        numCell.cellType = FooterCell;
-    }else{
-        numCell.cellType = MiddleCell;
-    }
+}
 
-    numCell.textLabel.text = [NSString stringWithFormat:@"%d天",self.num_min + indexPath.row];
-    return numCell;
+#pragma mark -
+#pragma mark RemindCellDelegate
+- (void) remindCellDidClickDetail:(RemindCell *)remindCell{
+    
 }
 
 #pragma mark -
 #pragma UITableViewDelegate
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+<<<<<<< HEAD
     self.num = indexPath.row + self.num_min;
     [tableView reloadData];
     
     if ([delegate respondsToSelector:@selector(numSelector:didSelected:)]) {
         [delegate numSelector:self didSelected:[NSNumber numberWithInt:self.num]];
+=======
+    if (self.remindArray) {
+        long timeout = [[self.remindArray objectAtIndex:indexPath.row] longValue];
+        if (timeout == 0) {
+            [self.remindArray replaceObjectAtIndex:indexPath.row withObject:[NSNumber numberWithLong:7*60]];
+        }else{
+             [self.remindArray replaceObjectAtIndex:indexPath.row withObject:[NSNumber numberWithLong:0]];
+        }
+        [tableView reloadData];
+    }else{
+        self.num = indexPath.row + self.num_min;
+        [tableView reloadData];
+>>>>>>> f57f866045e4d3ca04604309ce2a5ee27fc62056
     }
 }
 @end
