@@ -12,4 +12,6 @@
     
 }
 + (NSMutableArray *) config;
++ (id) settingValueForKey:(NSString *)key;
++ (void) setSettingValue:(id)obj forKey:(NSString *)key;
 @end

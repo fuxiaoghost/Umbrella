@@ -16,18 +16,36 @@
 					<integer>30</integer>
 					<key>Name</key>
 					<string>月经周期</string>
+					<key>Tag</key>
+					<string>Setting_Cycle</string>
+					<key>Min</key>
+					<integer>15</integer>
+					<key>Max</key>
+					<integer>45</integer>
 				</dict>
 				<dict>
 					<key>Name</key>
 					<string>经期长度</string>
 					<key>Data</key>
 					<integer>5</integer>
+					<key>Tag</key>
+					<string>Setting_Length</string>
+					<key>Min</key>
+					<integer>3</integer>
+					<key>Max</key>
+					<integer>15</integer>
 				</dict>
 				<dict>
 					<key>Name</key>
 					<string>排卵日</string>
 					<key>Data</key>
 					<integer>14</integer>
+					<key>Tag</key>
+					<string>Setting_Ovulation</string>
+					<key>Min</key>
+					<integer>5</integer>
+					<key>Max</key>
+					<integer>25</integer>
 				</dict>
 			</array>
 			<key>Name</key>

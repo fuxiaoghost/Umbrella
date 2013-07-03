@@ -59,7 +59,6 @@
     SettingCell *cell = (SettingCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
         cell = [[[SettingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
-        cell.textLabel.text = [[[[self.configArray objectAtIndex:dataIndex] objectForKey:@"Data"] objectAtIndex:indexPath.row] objectForKey:@"Name"];
         cell.backgroundView = [[[UIView alloc] init] autorelease];
         cell.backgroundColor = [UIColor clearColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -71,6 +70,7 @@
     }else{
         cell.cellType = MiddleCell;
     }
+    cell.textLabel.text = [[[[self.configArray objectAtIndex:dataIndex] objectForKey:@"Data"] objectAtIndex:indexPath.row] objectForKey:@"Name"];
     return cell;
 }
 
@@ -79,6 +79,8 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NumSelectorViewController *numSelectorVC = [[NumSelectorViewController alloc] init];
     numSelectorVC.navTitle = [[[[self.configArray objectAtIndex:dataIndex] objectForKey:@"Data"] objectAtIndex:indexPath.row] objectForKey:@"Name"];
+    
+    
     numSelectorVC.num = [[[[[self.configArray objectAtIndex:dataIndex] objectForKey:@"Data"] objectAtIndex:indexPath.row] objectForKey:@"Data"] intValue];
     
     switch (indexPath.row) {

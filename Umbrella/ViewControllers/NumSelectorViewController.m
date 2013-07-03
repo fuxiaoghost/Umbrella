@@ -19,6 +19,7 @@
 @synthesize tips;
 @synthesize num_min;
 @synthesize num_max;
+@synthesize delegate;
 
 - (void) dealloc{
     self.num_min = 0;
@@ -107,5 +108,9 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     self.num = indexPath.row + self.num_min;
     [tableView reloadData];
+    
+    if ([delegate respondsToSelector:@selector(numSelector:didSelected:)]) {
+        [delegate numSelector:self didSelected:[NSNumber numberWithInt:self.num]];
+    }
 }
 @end

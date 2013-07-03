@@ -12,10 +12,12 @@
 
 @interface SettingForCycleViewController ()
 @property (nonatomic,retain) NSMutableArray *configArray;
+@property (nonatomic,assign) NSInteger selectedIndex;
 @end
 
 @implementation SettingForCycleViewController
 @synthesize dataIndex;
+@synthesize selectedIndex;
 @synthesize configArray;
 
 - (void) dealloc{
@@ -59,7 +61,6 @@
     SettingCell *cell = (SettingCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
         cell = [[[SettingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
-        cell.textLabel.text = [[[[self.configArray objectAtIndex:dataIndex] objectForKey:@"Data"] objectAtIndex:indexPath.row] objectForKey:@"Name"];
         cell.backgroundView = [[[UIView alloc] init] autorelease];
         cell.backgroundColor = [UIColor clearColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -71,6 +72,8 @@
     }else{
         cell.cellType = MiddleCell;
     }
+    NSString *name = cell.textLabel.text = [[[[self.configArray objectAtIndex:dataIndex] objectForKey:@"Data"] objectAtIndex:indexPath.row] objectForKey:@"Tag"];
+    cell.textLabel.text = name;
     return cell;
 }
 
@@ -79,34 +82,48 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NumSelectorViewController *numSelectorVC = [[NumSelectorViewController alloc] init];
     numSelectorVC.navTitle = [[[[self.configArray objectAtIndex:dataIndex] objectForKey:@"Data"] objectAtIndex:indexPath.row] objectForKey:@"Name"];
-    numSelectorVC.num = [[[[[self.configArray objectAtIndex:dataIndex] objectForKey:@"Data"] objectAtIndex:indexPath.row] objectForKey:@"Data"] intValue];
     
+    NSString *key = [[[[self.configArray objectAtIndex:dataIndex] objectForKey:@"Data"] objectAtIndex:indexPath.row] objectForKey:@"Tag"];
+    if ([Utils settingValueForKey:key]) {
+        numSelectorVC.num = [[Utils settingValueForKey:key] intValue];
+    }else{
+        numSelectorVC.num = [[[[[self.configArray objectAtIndex:dataIndex] objectForKey:@"Data"] objectAtIndex:indexPath.row] objectForKey:@"Data"] intValue];
+    }
+
+    NSInteger min = [[[[[self.configArray objectAtIndex:dataIndex] objectForKey:@"Data"] objectAtIndex:indexPath.row] objectForKey:@"Min"] intValue];
+    NSInteger max = [[[[[self.configArray objectAtIndex:dataIndex] objectForKey:@"Data"] objectAtIndex:indexPath.row] objectForKey:@"Max"] intValue];
+    
+    numSelectorVC.num_min = min;
+    numSelectorVC.num_max = max;
     switch (indexPath.row) {
         case 0:{
             numSelectorVC.tips = @"月经周期只针对于没有用户使用数据的情况下的临时配置参数，在使用一段时间之后我们会以用户真实数据为准";
-            numSelectorVC.num_min = UMB_CYCLE_MIN;
-            numSelectorVC.num_max = UMB_CYCLE_MAX;
             break;
         }
         case 1:{
             numSelectorVC.tips = @"您的月经通常会持续多久？";
-            numSelectorVC.num_min = UMB_CYCLELENGTH_MIN;
-            numSelectorVC.num_max = UMB_CYCLELENGTH_MAX;
             break;
         }
         case 2:{
             numSelectorVC.tips = @"从下次月经日期开始往前数至排卵日。当前默认为下月经前14天";
-            numSelectorVC.num_min = UMB_OVULATION_MIN;
-            numSelectorVC.num_max = UMB_OVULATION_MAX;
             break;
         }
         
         default:
             break;
     }
+    self.selectedIndex = indexPath.row;
     [self.navigationController pushViewController:numSelectorVC animated:YES];
     [numSelectorVC release];
+    numSelectorVC.delegate = self;
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+
+#pragma mark -
+#pragma mark NumSelectorViewControllerDelegate
+- (void) numSelector:(NumSelectorViewController *)numSelector didSelected:(id)obj{
+    NSString *key = [[[[self.configArray objectAtIndex:dataIndex] objectForKey:@"Data"] objectAtIndex:self.selectedIndex] objectForKey:@"Tag"];
+    [Utils setSettingValue:obj forKey:key];
+}
 @end
