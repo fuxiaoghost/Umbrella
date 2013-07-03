@@ -60,19 +60,40 @@
 					<key>Name</key>
 					<string>经期提醒</string>
 					<key>Data</key>
-					<array/>
+					<array>
+						<integer>0</integer>
+						<integer>0</integer>
+						<integer>0</integer>
+						<integer>0</integer>
+						<integer>0</integer>
+						<integer>0</integer>
+					</array>
 				</dict>
 				<dict>
 					<key>Name</key>
 					<string>受孕提醒</string>
 					<key>Data</key>
-					<array/>
+					<array>
+						<integer>0</integer>
+						<integer>0</integer>
+						<integer>0</integer>
+						<integer>0</integer>
+						<integer>0</integer>
+						<integer>0</integer>
+					</array>
 				</dict>
 				<dict>
 					<key>Name</key>
 					<string>排卵日提醒</string>
 					<key>Data</key>
-					<array/>
+					<array>
+						<integer>0</integer>
+						<integer>0</integer>
+						<integer>0</integer>
+						<integer>0</integer>
+						<integer>0</integer>
+						<integer>0</integer>
+					</array>
 				</dict>
 			</array>
 			<key>Name</key>
@@ -94,6 +115,6 @@
 		</dict>
 	</array>
 	<key>Version</key>
-	<string>1.0</string>
+	<string>1.1</string>
 </dict>
 </plist>
