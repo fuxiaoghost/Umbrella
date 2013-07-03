@@ -51,8 +51,7 @@
 //            [[NSFileManager defaultManager] copyItemAtPath:RESOURCEFILE(@"Config", @"plist") toPath:cPath error:&error];
 //        }
 //    }
-//    NSDictionary *formerDict = [NSDictionary dictionaryWithContentsOfFile:cPath];
-//    return [NSMutableArray arrayWithArray:[formerDict objectForKey:@"Data"]];
-    return [NSMutableArray arrayWithContentsOfFile:RESOURCEFILE(@"Config", @"plist")];
+    NSDictionary *formerDict = [NSDictionary dictionaryWithContentsOfFile:RESOURCEFILE(@"Config", @"plist")];
+    return [NSMutableArray arrayWithArray:[formerDict objectForKey:@"Data"]];
 }
 @end

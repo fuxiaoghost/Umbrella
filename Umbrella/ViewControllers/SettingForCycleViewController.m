@@ -72,7 +72,7 @@
     }else{
         cell.cellType = MiddleCell;
     }
-    NSString *name = cell.textLabel.text = [[[[self.configArray objectAtIndex:dataIndex] objectForKey:@"Data"] objectAtIndex:indexPath.row] objectForKey:@"Tag"];
+    NSString *name = cell.textLabel.text = [[[[self.configArray objectAtIndex:dataIndex] objectForKey:@"Data"] objectAtIndex:indexPath.row] objectForKey:@"Name"];
     cell.textLabel.text = name;
     return cell;
 }

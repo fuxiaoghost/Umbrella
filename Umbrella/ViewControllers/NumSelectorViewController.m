@@ -9,6 +9,7 @@
 #import "NumSelectorViewController.h"
 #import "NumCell.h"
 #import "RemindCell.h"
+#import "ActionButton.h"
 
 @interface NumSelectorViewController ()
 
@@ -20,12 +21,9 @@
 @synthesize tips;
 @synthesize num_min;
 @synthesize num_max;
-<<<<<<< HEAD
 @synthesize delegate;
-=======
 @synthesize remindArray;
 
->>>>>>> f57f866045e4d3ca04604309ce2a5ee27fc62056
 
 - (void) dealloc{
     self.num_min = 0;
@@ -53,6 +51,8 @@
     [self.view addSubview:numList];
     [numList release];
     
+    
+    // header view
     UILabel *tipsLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, SCREEN_WIDTH - 20, 10)];
     tipsLbl.font = [UIFont systemFontOfSize:14.0f];
     tipsLbl.numberOfLines = 0;
@@ -70,6 +70,37 @@
     
     numList.tableHeaderView = tableHeaderView;
     [tableHeaderView release];
+    
+    // footer view
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 60)];
+    
+    ActionButton *actionButton  = [ActionButton buttonWithType:UIButtonTypeCustom];
+    actionButton.frame = CGRectMake(50, 10, SCREEN_WIDTH - 100, 40);
+    actionButton.radius = 5.0f;
+    [actionButton setTitle:@"确定" forState:UIControlStateNormal];
+    [actionButton.titleLabel setFont:[UIFont boldSystemFontOfSize:18.0f]];
+    [actionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [footerView addSubview:actionButton];
+    
+    [actionButton addTarget:self action:@selector(actionButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    numList.tableFooterView = footerView;
+    [footerView release];
+    
+}
+
+#pragma mark -
+#pragma mark Actions
+- (void) actionButtonClick:(id)sender{
+    if (self.remindArray) {
+        
+    }else{
+        
+        if ([delegate respondsToSelector:@selector(numSelector:didSelected:)]) {
+            [delegate numSelector:self didSelected:[NSNumber numberWithInt:self.num]];
+        }
+    }
+
 }
 
 #pragma mark -
@@ -159,25 +190,26 @@
 #pragma mark -
 #pragma UITableViewDelegate
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-<<<<<<< HEAD
-    self.num = indexPath.row + self.num_min;
-    [tableView reloadData];
-    
-    if ([delegate respondsToSelector:@selector(numSelector:didSelected:)]) {
-        [delegate numSelector:self didSelected:[NSNumber numberWithInt:self.num]];
-=======
+
     if (self.remindArray) {
         long timeout = [[self.remindArray objectAtIndex:indexPath.row] longValue];
         if (timeout == 0) {
             [self.remindArray replaceObjectAtIndex:indexPath.row withObject:[NSNumber numberWithLong:7*60]];
         }else{
-             [self.remindArray replaceObjectAtIndex:indexPath.row withObject:[NSNumber numberWithLong:0]];
+            [self.remindArray replaceObjectAtIndex:indexPath.row withObject:[NSNumber numberWithLong:0]];
         }
         [tableView reloadData];
     }else{
         self.num = indexPath.row + self.num_min;
         [tableView reloadData];
->>>>>>> f57f866045e4d3ca04604309ce2a5ee27fc62056
+    }
+    
+    if (IOSVersion_5) {
+        [self dismissViewControllerAnimated:YES completion:^{
+        
+        }];
+    }else{
+        [self dismissModalViewControllerAnimated:YES];
     }
 }
 @end

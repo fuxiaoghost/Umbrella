@@ -17,7 +17,7 @@
 					<key>Name</key>
 					<string>月经周期</string>
 					<key>Tag</key>
-					<string>Setting_Cycle</string>
+					<string>Setting_Period</string>
 					<key>Min</key>
 					<integer>15</integer>
 					<key>Max</key>
@@ -59,6 +59,8 @@
 				<dict>
 					<key>Name</key>
 					<string>经期提醒</string>
+					<key>Tag</key>
+					<string>Setting_Period_Remind</string>
 					<key>Data</key>
 					<array>
 						<integer>0</integer>
@@ -72,6 +74,8 @@
 				<dict>
 					<key>Name</key>
 					<string>受孕提醒</string>
+					<key>Tag</key>
+					<string>Setting_Conception_Remind</string>
 					<key>Data</key>
 					<array>
 						<integer>0</integer>
@@ -85,6 +89,8 @@
 				<dict>
 					<key>Name</key>
 					<string>排卵日提醒</string>
+					<key>Tag</key>
+					<string>Setting_Ovulation_Remind</string>
 					<key>Data</key>
 					<array>
 						<integer>0</integer>

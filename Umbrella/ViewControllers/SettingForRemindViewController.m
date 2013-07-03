@@ -79,33 +79,29 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NumSelectorViewController *numSelectorVC = [[NumSelectorViewController alloc] init];
     numSelectorVC.navTitle = [[[[self.configArray objectAtIndex:dataIndex] objectForKey:@"Data"] objectAtIndex:indexPath.row] objectForKey:@"Name"];
-<<<<<<< HEAD
     
     
-    numSelectorVC.num = [[[[[self.configArray objectAtIndex:dataIndex] objectForKey:@"Data"] objectAtIndex:indexPath.row] objectForKey:@"Data"] intValue];
-    
-=======
-    NSArray *remindArray = [[[[self.configArray objectAtIndex:dataIndex] objectForKey:@"Data"] objectAtIndex:indexPath.row] objectForKey:@"Data"];
-    numSelectorVC.remindArray = [NSMutableArray arrayWithArray:remindArray];
+    NSString *key = [[[[self.configArray objectAtIndex:dataIndex] objectForKey:@"Data"] objectAtIndex:indexPath.row] objectForKey:@"Tag"];
+    if ([Utils settingValueForKey:key]) {
+        numSelectorVC.remindArray = [NSMutableArray arrayWithArray:[Utils settingValueForKey:key]];
+    }else{
+        NSArray *remindArray = [[[[self.configArray objectAtIndex:dataIndex] objectForKey:@"Data"] objectAtIndex:indexPath.row] objectForKey:@"Data"];
+        numSelectorVC.remindArray = [NSMutableArray arrayWithArray:remindArray];
+    }
     numSelectorVC.num = -1;
->>>>>>> f57f866045e4d3ca04604309ce2a5ee27fc62056
+    numSelectorVC.num_min = 0;
+    numSelectorVC.num_max = numSelectorVC.remindArray.count - 1;
     switch (indexPath.row) {
         case 0:{
             numSelectorVC.tips = @"您希望在此事件前几天进行提醒？设备会发出弹出窗口来提醒您";
-            numSelectorVC.num_min = UMB_REMIND_MIN;
-            numSelectorVC.num_max = UMB_REMIND_MAX;
             break;
         }
         case 1:{
             numSelectorVC.tips = @"您希望在此事件前几天进行提醒？设备会发出弹出窗口来提醒您";
-            numSelectorVC.num_min = UMB_REMIND_MIN;
-            numSelectorVC.num_max = UMB_REMIND_MAX;
             break;
         }
         case 2:{
             numSelectorVC.tips = @"您希望在此事件前几天进行提醒？设备会发出弹出窗口来提醒您";
-            numSelectorVC.num_min = UMB_REMIND_MIN;
-            numSelectorVC.num_max = UMB_REMIND_MAX;
             break;
         }
             
@@ -114,6 +110,13 @@
     }
     [self.navigationController pushViewController:numSelectorVC animated:YES];
     [numSelectorVC release];
+    numSelectorVC.delegate = self;
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark -
+#pragma mark NumSelectorViewControllerDelegate
+- (void) numSelector:(NumSelectorViewController *)numSelector didSelected:(id)obj{
+    
 }
 @end

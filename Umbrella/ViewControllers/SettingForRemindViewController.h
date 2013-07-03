@@ -7,7 +7,10 @@
 //
 
 #import "BaseViewController.h"
+#import "NumSelectorViewController.h"
 
-@interface SettingForRemindViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
+@interface SettingForRemindViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,NumSelectorViewControllerDelegate>{
+    
+}
 @property (nonatomic,assign) NSInteger dataIndex;
 @end
