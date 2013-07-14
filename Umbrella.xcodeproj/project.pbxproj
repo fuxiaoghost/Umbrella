@@ -35,6 +35,7 @@
 		79D52780176ADF9900E4B7D6 /* CalendarTodaysDate.png in Resources */ = {isa = PBXBuildFile; fileRef = 79D52776176ADF9900E4B7D6 /* CalendarTodaysDate.png */; };
 		79D52781176ADF9900E4B7D6 /* CalendarTodaysDate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79D52777176ADF9900E4B7D6 /* CalendarTodaysDate@2x.png */; };
 		79D52785176AE04600E4B7D6 /* TSQTACalendarRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79D52784176AE04600E4B7D6 /* TSQTACalendarRowCell.m */; };
+		DD15BAF11790F7CC001A6CF1 /* TimeSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = DD15BAF01790F7CC001A6CF1 /* TimeSelector.m */; };
 		DD35203B176D74DE0032E1C7 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD35203A176D74DE0032E1C7 /* SettingCell.m */; };
 		DD35203E176D766C0032E1C7 /* UIImage+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = DD35203D176D766C0032E1C7 /* UIImage+Utils.m */; };
 		DD35204B176D8A3E0032E1C7 /* table_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = DD35203F176D8A3E0032E1C7 /* table_arrow.png */; };
@@ -113,6 +114,8 @@
 		79D52777176ADF9900E4B7D6 /* CalendarTodaysDate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CalendarTodaysDate@2x.png"; sourceTree = "<group>"; };
 		79D52783176AE04600E4B7D6 /* TSQTACalendarRowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSQTACalendarRowCell.h; sourceTree = "<group>"; };
 		79D52784176AE04600E4B7D6 /* TSQTACalendarRowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSQTACalendarRowCell.m; sourceTree = "<group>"; };
+		DD15BAEF1790F7CC001A6CF1 /* TimeSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeSelector.h; sourceTree = "<group>"; };
+		DD15BAF01790F7CC001A6CF1 /* TimeSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeSelector.m; sourceTree = "<group>"; };
 		DD352039176D74DE0032E1C7 /* SettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
 		DD35203A176D74DE0032E1C7 /* SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
 		DD35203C176D766C0032E1C7 /* UIImage+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Utils.h"; sourceTree = "<group>"; };
@@ -364,6 +367,8 @@
 				DD35203D176D766C0032E1C7 /* UIImage+Utils.m */,
 				DD697296176C45C5006A3C37 /* Utils.h */,
 				DD697297176C45C5006A3C37 /* Utils.m */,
+				DD15BAEF1790F7CC001A6CF1 /* TimeSelector.h */,
+				DD15BAF01790F7CC001A6CF1 /* TimeSelector.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -490,6 +495,7 @@
 				DD448A8E177582A60041BB0B /* SelectableCell.m in Sources */,
 				DD448A9C177586700041BB0B /* NumCell.m in Sources */,
 				796881D717792928008D1697 /* RemindCell.m in Sources */,
+				DD15BAF11790F7CC001A6CF1 /* TimeSelector.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

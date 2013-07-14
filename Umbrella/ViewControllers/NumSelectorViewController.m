@@ -101,6 +101,7 @@
         }
     }
 
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark -
@@ -190,7 +191,6 @@
 #pragma mark -
 #pragma UITableViewDelegate
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-
     if (self.remindArray) {
         long timeout = [[self.remindArray objectAtIndex:indexPath.row] longValue];
         if (timeout == 0) {
@@ -204,12 +204,6 @@
         [tableView reloadData];
     }
     
-    if (IOSVersion_5) {
-        [self dismissViewControllerAnimated:YES completion:^{
-        
-        }];
-    }else{
-        [self dismissModalViewControllerAnimated:YES];
-    }
+   
 }
 @end
