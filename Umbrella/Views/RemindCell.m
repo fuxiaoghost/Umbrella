@@ -11,6 +11,7 @@
 @implementation RemindCell
 @synthesize cellType = _cellType;
 @synthesize delegate;
+@synthesize detail = _detail;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -60,12 +61,16 @@
     }
 }
 
-- (void) setDetail:(BOOL)detail{
-    if (detail) {
+- (void) setDetail:(BOOL)detail_{
+    if (detail_) {
         [detailButton setImage:[UIImage noCacheImageNamed:@"detail_icon.png"] forState:UIControlStateNormal];
     }else{
         [detailButton setImage:nil forState:UIControlStateNormal];
     }
+    _detail = detail_;
+}
+- (BOOL) detail{
+    return _detail;
 }
 
 - (void) setHighlighted:(BOOL)highlighted animated:(BOOL)animated{

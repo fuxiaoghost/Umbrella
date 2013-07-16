@@ -24,7 +24,7 @@
         [self.contentView addSubview:checkImageView];
         checkImageView.contentMode = UIViewContentModeCenter;
         [checkImageView release];
-        checkImageView.frame = CGRectMake(SCREEN_WIDTH - 60,0,44,44);
+        checkImageView.frame = CGRectMake(SCREEN_WIDTH - 44,0,44,44);
     }
     return self;
 }

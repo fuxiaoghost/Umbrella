@@ -10,6 +10,7 @@
 #import "NumCell.h"
 #import "RemindCell.h"
 #import "ActionButton.h"
+#import "TimeSelector.h"
 
 @interface NumSelectorViewController ()
 
@@ -185,7 +186,11 @@
 #pragma mark -
 #pragma mark RemindCellDelegate
 - (void) remindCellDidClickDetail:(RemindCell *)remindCell{
-    
+    if(remindCell.detail){
+        TimeSelector *timeSelector = [[TimeSelector alloc] init];
+        [timeSelector popOverView:nil];
+        [timeSelector autorelease];
+    }
 }
 
 #pragma mark -

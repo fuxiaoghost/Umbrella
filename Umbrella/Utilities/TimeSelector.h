@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TimeSelector : NSObject{
+@interface TimeSelector : NSObject<UIPickerViewDataSource,UIPickerViewDelegate>{
 @private
     UIView *contentView;
 }

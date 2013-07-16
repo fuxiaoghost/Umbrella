@@ -24,7 +24,7 @@ typedef enum{
 }
 @property (nonatomic,assign) RemindCellType cellType;
 @property (nonatomic,assign) id<RemindCellDelegate> delegate;
-- (void) setDetail:(BOOL)detail;
+@property (nonatomic,assign) BOOL detail;
 @end
 
 
