@@ -12,6 +12,8 @@
 @synthesize cellType = _cellType;
 @synthesize delegate;
 @synthesize detail = _detail;
+@synthesize timeout;
+@synthesize index;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];

@@ -24,7 +24,7 @@
 @synthesize num_max;
 @synthesize delegate;
 @synthesize remindArray;
-
+@synthesize selectedRow;
 
 - (void) dealloc{
     self.num_min = 0;
@@ -42,7 +42,7 @@
 	// Do any additional setup after loading the view.
     self.title = self.navTitle;
     
-    UITableView *numList = [[UITableView alloc] initWithFrame:CGRectMake(0, 45, SCREEN_WIDTH, MAINCONTENTHEIGHT - 1) style:UITableViewStyleGrouped];
+    numList = [[UITableView alloc] initWithFrame:CGRectMake(0, 45, SCREEN_WIDTH, MAINCONTENTHEIGHT - 1) style:UITableViewStyleGrouped];
     numList.separatorStyle = UITableViewCellSeparatorStyleNone;
     numList.delegate = self;
     numList.dataSource = self;
@@ -125,6 +125,7 @@
             remindCell.backgroundColor = [UIColor clearColor];
             remindCell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
+        remindCell.index = indexPath.row;
         remindCell.delegate = self;
         remindCell.textLabel.text = [NSString stringWithFormat:@"%d天",self.num_min + indexPath.row];
         remindCell.detailTextLabel.text = @"";
@@ -141,7 +142,7 @@
                 }else{
                     remindCell.detailTextLabel.text = [NSString stringWithFormat:@"%d:%d      ",clock,minute];
                 }
-                
+                remindCell.timeout = timeout;
             }else{
                 [remindCell setDetail:NO];
             }
@@ -190,6 +191,9 @@
         TimeSelector *timeSelector = [[TimeSelector alloc] init];
         [timeSelector popOverView:nil];
         [timeSelector autorelease];
+        [timeSelector setTime:remindCell.timeout];
+        timeSelector.delegate = self;
+        self.selectedRow = remindCell.index;
     }
 }
 
@@ -208,7 +212,16 @@
         self.num = indexPath.row + self.num_min;
         [tableView reloadData];
     }
+}
+
+#pragma mark -
+#pragma mark TimeSelectorDelegate
+- (void) timeSelectorConfirm:(TimeSelector *)timeSelector{
+    [self.remindArray replaceObjectAtIndex:self.selectedRow withObject:[NSNumber numberWithInt:timeSelector.time]];
+    [numList reloadData];
+}
+
+- (void) timeSelectorCancel:(TimeSelector *)timeSelector{
     
-   
 }
 @end

@@ -25,6 +25,8 @@ typedef enum{
 @property (nonatomic,assign) RemindCellType cellType;
 @property (nonatomic,assign) id<RemindCellDelegate> delegate;
 @property (nonatomic,assign) BOOL detail;
+@property (nonatomic,assign) NSInteger timeout;
+@property (nonatomic,assign) NSInteger index;
 @end
 
 

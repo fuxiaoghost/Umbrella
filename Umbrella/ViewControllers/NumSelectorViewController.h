@@ -8,10 +8,12 @@
 
 #import "BaseViewController.h"
 #import "RemindCell.h"
+#import "TimeSelector.h"
 
 @protocol NumSelectorViewControllerDelegate;
-@interface NumSelectorViewController : BaseViewController<UITableViewDelegate,UITableViewDataSource,RemindCellDelegate>{
+@interface NumSelectorViewController : BaseViewController<UITableViewDelegate,UITableViewDataSource,RemindCellDelegate,TimeSelectorDelegate>{
     id delegate;
+    UITableView *numList;
 }
 @property (nonatomic,assign) NSInteger num;
 @property (nonatomic,copy) NSString *navTitle;
@@ -20,6 +22,7 @@
 @property (nonatomic,assign) NSInteger num_max;
 @property (nonatomic,retain) NSMutableArray *remindArray;
 @property (nonatomic,assign) id<NumSelectorViewControllerDelegate> delegate;
+@property (nonatomic,assign) NSInteger selectedRow;
 @end
 
 

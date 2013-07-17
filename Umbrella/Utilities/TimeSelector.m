@@ -11,6 +11,8 @@
 #import "ActionButton.h"
 
 @implementation TimeSelector
+@synthesize delegate;
+@synthesize time = _time;
 
 - (id) init{
     if (self = [super init]) {
@@ -51,7 +53,7 @@
     [cancelBtn addTarget:self action:@selector(cancelBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     
     // 滚轮
-    UIPickerView* pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 45, SCREEN_WIDTH, 216-36)];
+    pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 45, SCREEN_WIDTH, 216-36)];
     pickerView.delegate = self;
     pickerView.dataSource =  self;
     pickerView.showsSelectionIndicator = YES;
@@ -79,6 +81,22 @@
     }];
 }
 
+- (void) setTime:(NSInteger)time_{
+    NSInteger hour = time_/60;
+    NSInteger minute = time_ % 60;
+    NSInteger row = hour;
+    NSInteger component = minute/5;
+    _time = time_;
+    [pickerView selectRow:row inComponent:component animated:YES];
+}
+
+- (NSInteger) time{
+    NSInteger hour = [pickerView selectedRowInComponent:0];
+    NSInteger minute = [pickerView selectedRowInComponent:1] * 5;
+    _time = hour * 60 + minute;
+    return _time;
+}
+
 #pragma mark -
 #pragma mark UIPickerViewDataSource
 // returns the number of 'columns' to display.
@@ -92,7 +110,7 @@
     }else if(component == 1){
         return 12;
     }
-return 0;
+    return 0;
 }
 
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
@@ -105,8 +123,10 @@ return 0;
         numLbl.text = [NSString stringWithFormat:@"%d",row];
         numLbl.textAlignment = NSTextAlignmentRight;
     }else if(component == 1){
-        if (row==0) {
+        if (row == 0) {
             numLbl.text = [NSString stringWithFormat:@"%d%d",row * 5,row * 5];
+        }else if(row == 1){
+            numLbl.text = [NSString stringWithFormat:@"%d%d",0,row * 5];
         }else{
             numLbl.text = [NSString stringWithFormat:@"%d",row * 5];
         }
@@ -131,9 +151,15 @@ return 0;
 
 - (void) confirmBtnClick:(id)sender{
     [self slideDown];
+    if ([delegate respondsToSelector:@selector(timeSelectorConfirm:)]) {
+        [delegate timeSelectorConfirm:self];
+    }
 }
 
 - (void) cancelBtnClick:(id)sender{
     [self slideDown];
+    if ([delegate respondsToSelector:@selector(timeSelectorCancel:)]) {
+        [delegate timeSelectorCancel:self];
+    }
 }
 @end
